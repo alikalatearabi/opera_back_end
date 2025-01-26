@@ -11,6 +11,7 @@ import requestLogger from "@/common/middleware/requestLogger";
 import { env } from "@/common/utils/envConfig";
 import passport from "passport";
 import { authRouter } from "./api/auth/authRouter";
+import { eventRouter } from "./api/event/eventRouter";
 import { passportConfig } from "./auth";
 
 const logger = pino({ name: "server start" });
@@ -36,6 +37,7 @@ app.use(requestLogger);
 // Routes
 app.use("/api/auth", authRouter);
 app.use("/api/users", passport.authenticate("jwt", { session: false }), userRouter);
+app.use("/api/event", eventRouter);
 
 // Swagger UI
 app.use("/api/docs", openAPIRouter);
