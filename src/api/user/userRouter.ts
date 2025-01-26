@@ -8,7 +8,6 @@ import { userController } from "./userController";
 export const userRegistry = new ExtendedOpenAPIRegistry();
 export const userRouter: Router = express.Router();
 
-import { streamAudio } from "@/services/simotel";
 userRegistry.register("User", UserSchema);
 
 userRegistry.registerSecurePath({
@@ -19,7 +18,3 @@ userRegistry.registerSecurePath({
 });
 
 userRouter.get("/me", userController.getMe);
-userRouter.get("/test", (req, res) => {
-  streamAudio("14030522-143600-05135424418-903-131", "incoming");
-  res.send("done");
-});
