@@ -13,13 +13,13 @@ const { SESSION_EVENT_USERNAME, SESSION_EVENT_PASSWORD } = process.env;
 
 eventRegistry.registerSecurePath({
   method: "post",
-  path: "/api/event/sessionRecevied",
+  path: "/api/event/sessionReceived",
   tags: ["Event"],
   responses: createApiResponse(z.object({}), "Success"),
 });
 
 eventRouter.post(
-  "/sessionRecevied",
+  "/sessionReceived",
   expressBasicAuth({
     users: SESSION_EVENT_USERNAME && SESSION_EVENT_PASSWORD ? { [SESSION_EVENT_USERNAME]: SESSION_EVENT_PASSWORD } : {},
     challenge: true,
